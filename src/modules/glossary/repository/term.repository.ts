@@ -17,7 +17,7 @@ import { Terms } from "../entities/term.entity";
 export class TermRespository{
     constructor(
         @InjectRepository(Terms) // inyecto el repositorio 
-        private termRepository: Repository<Terms> // Propiedad privada llammada termRepository que es un Repositorio para trabajar específicamente
+        private readonly termRepository: Repository<Terms> // Propiedad privada llamada termRepository que es un Repositorio para trabajar específicamente
         //  con la entidad Terms
     ){}
 
@@ -37,7 +37,13 @@ export class TermRespository{
     async createTerm(term: string, definition: string, category: string): Promise<Terms> { // Promete devolver un objeto de tipo Terms
         const newterm = this.termRepository.create({term,definition,category}); // creo el objeto
         return await this.termRepository.save(newterm); // espero a que se cree y guardo
-      }
+    }
+
+    // Metodo que obtiene todos los terminos de la base de datos.
+
+    async getAllTerm(): Promise<Terms[]>{ // Promete devolver un arreglo de terminos Terms
+        return await this.termRepository.find(); // Equivalente a "SELECT * FROM terms" en SQL
+    }
 
     
       
