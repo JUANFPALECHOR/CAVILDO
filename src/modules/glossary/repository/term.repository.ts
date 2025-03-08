@@ -45,6 +45,16 @@ export class TermRespository{
         return await this.termRepository.find(); // Equivalente a "SELECT * FROM terms" en SQL
     }
 
+    // Metodo que obtiene un termino por ID 
+
+    async getTermById(id:number):Promise<Terms |null>{
+        return await this.termRepository.findOne({
+            where: {id:id}
+        }); // busca un único registro, Devuelve null si no encuentra nada
+    }
+
+    
+
     
       
 
