@@ -53,7 +53,28 @@ export class TermRespository{
         }); // busca un único registro, Devuelve null si no encuentra nada
     }
 
+    // Metodo para actualizar un termino
+
+    async updateTerm(id: number, updateData: Partial<Terms>): Promise<Terms | null> {
+        // Buscar el término existente
+        const existingTerm = await this.termRepository.findOne({
+            where: { id: id }
+        });
     
+        // Si no existe, devolver null
+        if (!existingTerm) {
+            return null;
+        }
+    
+        // Esta línea usa el operador de propagación (...) para combinar dos objetos.
+        const updatedTerm = { ...existingTerm, // Copia todos los datos originales
+             ...updateData }; // Sobreescribe solo la definición
+    
+        // Guardar y devolver el término actualizado
+        return await this.termRepository.save(updatedTerm);
+    }
+
+
 
     
       
