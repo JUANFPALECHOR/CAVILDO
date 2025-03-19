@@ -27,7 +27,7 @@ export class TermRespository{
      * 
      * @param term nombre del termino
      * @param definition definicion del termino
-     * @param category nombre de la caegoria si hay
+     * @param category nombre de la caegoria si hay.
      * @returns Una promesa que resuelve al término guardado en la base de datos
      * 
      * Creo una funcion de tipo async asincronico que me permite trabajar con operaciones que puedan tomar tiempo en completarse
