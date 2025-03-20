@@ -74,6 +74,27 @@ export class TermRespository{
         return await this.termRepository.save(updatedTerm);
     }
 
+    // Metodo para eliminar un termino por ID
+
+    /**
+     * 
+     * @param ID termino a eliminar
+     * @returns Devuelve true si el termino fue eliminado
+     */
+
+
+    async deleteTerm(id: number): Promise<boolean>{ // la promesa devuelve un boleano por que solo interesa saber si se elimino o no
+        const result = await this.termRepository.delete(id);
+        return (result.affected ?? 0) > 0; // Si result.affected es null o undefined, usa 0 
+        // Devuelve true si el número de registros afectados es mayor que cero, o false si es cero
+    }
+
+    
+
+
+
+
+
 
 
     
