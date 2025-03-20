@@ -14,7 +14,7 @@ import { Repository } from "typeorm";
 import { Terms } from "../entities/term.entity";
 
 @Injectable()
-export class TermRespository{
+export class TermRepository{
     constructor(
         @InjectRepository(Terms) // inyecto el repositorio 
         private readonly termRepository: Repository<Terms> // Propiedad privada llamada termRepository que es un Repositorio para trabajar específicamente
@@ -89,7 +89,7 @@ export class TermRespository{
         // Devuelve true si el número de registros afectados es mayor que cero, o false si es cero
     }
 
-    
+
 
 
 
